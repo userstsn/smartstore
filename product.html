@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="products.css">
+  <link rel="stylesheet" href="./fa/all.css">
+
+
+  <title>E-commerce</title>
+</head>
+
+<body>
+
+  <div class="loader" style="position:fixed;display:grid;place-items:center;background:#eee;z-index:99999999;width:100%;height:100%"> <img style="width:200px" src="./pic/loader.gif" alt=""></div>
+
+
+
+  <nav id="navbar" class="nav">
+    <a href="index.html"> <img src="./pic/logo.png" class="logo"> </a>
+    <ul class="nav-items">
+      <li><a href="index.html"> home </a></li>
+      <li class="active"><a href="product.html"> products </a></li>
+      <li><a href="about.html"> About </a></li>
+
+    </ul>
+    <div class="checkout"><i class="fa fa-shopping-cart"></i> &nbsp; <span class="num"></span></div>
+  </nav>
+
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <img src="./pic/c1.jpg" style="width:100%">
+      <div class="img-bg"></div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./pic/c2.jpg" style="width:100%">
+      <div class="img-bg"></div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="./pic/c3.jpg" style="width:100%">
+      <div class="img-bg"></div>
+    </div>
+
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  </div>
+  <br>
+
+
+  <div class="controls">
+   
+<input type="text" id="search" onkeyup="searchQuery(this.value.toLowerCase())" placeholder="Search for products..." title="Type in a product">
+<div class="dropdown">
+  <label for="categories">Choose a category:</label>
+  <select name="cars" id="categories" onchange="categoryChange(this.value)">
+   <option value="All">All</option>
+   <option value="gaming">gaming</option>
+    <option value="electronics">electronics</option>
+    <option value="fashion">fashion</option>
+    <option value="cosmetics">cosmetics</option>
+    <option value="sports">sports</option>
+    <option value="stationary">stationary</option>
+    <option value="phones">phones</option>
+    <option value="groceries">groceries</option>
+    <option value="furniture">furniture</option>
+    <option value="household">household</option>
+  </select>
+</div>
+
+  </div>
+
+
+
+  <!-- used through js as main container for product -->
+  <section class="categories product" id="cat-container"></section>
+
+
+
+  <!-- used through js for checkout products view -->
+  <div class="checkout-section-bg"></div>
+
+  <section class="checkout-section">
+    <div class="checkout-products"></div>
+    <div class="checkout-pay">
+      <div class="total-price">Total Price: RS <span class="price">0</span></div>
+
+      <p class="spm">Please select your payment method</p>
+      <div class="payment-methods">
+        <div>
+            <input checked type="radio" id="cod" name="pm" onchange="payMethodChange()">
+            <label for="cod">Cash On Delivery</label><br>
+        </div>
+        <div>
+            <input type="radio" id="op" name="pm" onchange="payMethodChange()">
+            <label for="op">Online Payments</label><br>
+        </div>
+      </div>
+      <div class="optypes">
+        <div class="esewa"><a href="https://esewa.com.np/" target="pudek"> <img src="./pic/esewa.png" height="90px" width="200px"></a> </div>
+        <div class="khalti"><a href="https://khalti.com/" target="pudek"> <img src="./pic/khalti.png" height="90px" width="200px"></a></div>
+        <div class="imepay"> <a href="https://www.imepay.com.np/" target="pudek"><img src="./pic/imepay.png" height="90px" width="200px"></a> </div>
+      </div>
+      <button class="buy-btn" onclick="orderBtnPress()">Order Now</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo">
+        <img src="./pic/logo.png" alt="">
+    </div>
+
+    <div class="other">
+    <div class="social">
+       <span><a href="https://www.facebook.com/pages/category/School/Sainik-Awasiya-Mahavidyalaya-Chitwan-101355094993809/"> <i class="fab fa-facebook"></i></a></span>
+       <span> <a href=""><i class="fab fa-github"></i></a></span> 
+    </div>
+    <div class="copyright">
+        © 2021 ecommerce Nepal, Inc. All rights reserved.
+        <div>
+        <span class="links">Privacy policy</span>
+        <span class="links">Terms of use</span>
+        <span class="links">Accessibility</span>
+        <span class="links">Sitemap</span>
+    </div>
+    </div>
+</div>
+</footer>
+
+
+
+  <script src="script.js"></script>
+  <script src="data_product.js"></script>
+  <script src="./fa/all.js"></script>
+
+
+  <script>
+
+    const nextBtn = document.querySelector(".next");
+
+    setInterval(() => {
+      nextBtn.click();
+
+    }, 5000);
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+  </script>
+</body>
+
+</html>

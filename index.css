@@ -1,0 +1,16 @@
+.card img{
+    width:200px;
+    position: relative;
+    
+}
+
+.card{
+    width:350px;
+}
+
+.nav .checkout{
+    display:none;
+}
+.nav{
+    padding-right: 200px;
+}
